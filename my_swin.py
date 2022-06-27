@@ -5,15 +5,12 @@ import PIL
 import cv2
 import argparse
 
-import torch
-import torch.nn.functional as F
-import torchvision
 import torchvision.transforms as T
 from models.swin_transfoemer_ import swin_base_patch4_window7_224
 
 
-def load_model(save_dir):
-    norm_layer = torch.nn.modules.normalization.LayerNorm
+def load_model():
+   
     model = swin_base_patch4_window7_224(pretrained=True)
     model.eval()
     model.to('cuda:0')
@@ -47,7 +44,7 @@ def main(args):
                 ]
     transforms = T.Compose(transforms)
 
-    model = load_model(args.ckpt)
+    model = load_model()
 
     for img_name in imgs_list:
 
@@ -59,7 +56,7 @@ def main(args):
         _, pred = output.topk(5, 1, True, True)
 
         print("-"*20)
-        print("Inference Result:")
+        print("Inference Result: \n")
         for i in range(5):
             print(imagenet_labels[int(pred[0, i])])
     print('finished')
@@ -75,3 +72,5 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     main(args)
+
+    os.getcwd()
