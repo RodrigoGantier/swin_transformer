@@ -30,13 +30,9 @@ import torch.utils.checkpoint as checkpoint
 from torch.hub import load_state_dict_from_url
 
 from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
-# from .helpers import build_model_with_cfg, overlay_external_default_cfg
-# from .layers import PatchEmbed, Mlp, DropPath, to_2tuple, trunc_normal_
 from torch import _assert
 from itertools import repeat
 import collections.abc
-# from .registry import register_model
-# from .vision_transformer import checkpoint_filter_fn, _init_vit_weights
 
 
 _logger = logging.getLogger(__name__)
@@ -1038,6 +1034,14 @@ def _create_swin_transformer(variant, pretrained=False, default_cfg=None, **kwar
 
     return model
 
+
+@register_model
+def swin_tiny_patch4_window7_224(pretrained=False, **kwargs):
+    """ Swin-T @ 224x224, trained ImageNet-1k
+    """
+    model_kwargs = dict(
+        patch_size=4, window_size=7, embed_dim=96, depths=(2, 2, 6, 2), num_heads=(3, 6, 12, 24), **kwargs)
+    return _create_swin_transformer('swin_tiny_patch4_window7_224', pretrained=pretrained, **model_kwargs)
 
 
 @register_model
