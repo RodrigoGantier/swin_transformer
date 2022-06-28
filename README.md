@@ -13,4 +13,4 @@ python3 -m pip install --user --upgrade git+https://github.com/microsoft/tutel@m
 
 ## Google colab
 
-- Also you can run it in google colab [colab notebook](https://github.com/RodrigoGantier/swin_transformer/blob/main/swin_transfoemer.ipynb)  ![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg).
+- Also you can run it in google colab [colab notebook](https://colab.research.google.com/github/RodrigoGantier/swin_transformer/blob/main/swin_transfoemer.ipynb)  ![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg).
