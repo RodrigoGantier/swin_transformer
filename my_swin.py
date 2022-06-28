@@ -6,12 +6,12 @@ import cv2
 import argparse
 
 import torchvision.transforms as T
-from models.swin_transfoemer_ import swin_base_patch4_window7_224
+from models.swin_transfoemer_ import swin_tiny_patch4_window7_224
 
 
 def load_model():
    
-    model = swin_base_patch4_window7_224(pretrained=True)
+    model = swin_tiny_patch4_window7_224(pretrained=True)
     model.eval()
     model.to('cuda:0')
 
